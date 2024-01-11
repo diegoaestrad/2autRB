@@ -4,25 +4,10 @@ import { test, expect } from '@playwright/test';
 
     const d = new Date();
     let time = d.getTime();
-    
     const excecution="Test"+d.getFullYear+d.getHours+d.getMinutes
-    
-    console.log("Execution on" + time)
+    console.log("Execution on" + time);
 
-
-
-
-// test('authenticate', async ({ page }) => {
-//     await page.goto('https://beta.ruggedbooksms.com/');
-//     await page.getByPlaceholder('User Name').click();
-//     await page.getByPlaceholder('User Name').press('Control+a');
-//     await page.getByPlaceholder('User Name').fill('admin@rbms.com');
-//     await page.getByPlaceholder('User Name').press('Tab');
-//     await page.getByPlaceholder('Password').fill('password');
-//     await page.getByRole('button', { name: 'Sign In' }).click();
-//   });
-
-test('Create Admin', async ({ page }) => {
+test.only('Create Admin', async ({ page }) => {
     var caseid = "admin"
     await page.goto('https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/');
     await page.getByPlaceholder('User Name').click();

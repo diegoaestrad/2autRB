@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "RB automation process",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:debug": "npx playwright test --debug",
+    "upload": "git add . && git commit -m 'fast upload' && git push"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
