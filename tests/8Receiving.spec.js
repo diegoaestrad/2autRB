@@ -1,6 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 test('createNewReceiving', async ({ page }) => {
+  await page.goto('https://beta.ruggedbooksms.com/');
+  await page.goto('https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/');
+  await page.getByPlaceholder('User Name').click();
+  await page.getByPlaceholder('User Name').press('Control+a');
+  await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+  await page.getByPlaceholder('User Name').press('Tab');
+  await page.getByPlaceholder('Password').press('Control+a');
+  await page.getByPlaceholder('Password').fill('password');
+  await page.getByRole('button', { name: 'Sign In' }).click();
   await page.getByRole('link', { name: 'Receiving', exact: true }).click();
   await page.getByRole('button', { name: 'Create New Receiving' }).click();
   await page.locator('div').filter({ hasText: /^\*Receiving TypePO$/ }).locator('svg').click();

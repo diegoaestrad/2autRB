@@ -1,6 +1,32 @@
 import { test, expect } from '@playwright/test';
 
+{
+  const d = new Date();
+  let time = d.getTime();
+  
+  var excecution="Test"+d.getFullYear+"0"
+  
+  console.log("Execution on" + time)
+
+}
+test('authenticate', async ({ page }) => {
+  await page.goto('https://beta.ruggedbooksms.com/');
+  await page.getByPlaceholder('User Name').click();
+  await page.getByPlaceholder('User Name').press('Control+a');
+  await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+  await page.getByPlaceholder('User Name').press('Tab');
+  await page.getByPlaceholder('Password').fill('password');
+  await page.getByRole('button', { name: 'Sign In' }).click();
+});
+
 test('addfieldvalueboolean-false', async ({ page }) => {
+  await page.goto('https://beta.ruggedbooksms.com/');
+  await page.getByPlaceholder('User Name').click();
+  await page.getByPlaceholder('User Name').press('Control+a');
+  await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+  await page.getByPlaceholder('User Name').press('Tab');
+  await page.getByPlaceholder('Password').fill('password');
+  await page.getByRole('button', { name: 'Sign In' }).click();
   await page.getByRole('link', { name: 'Field Value' }).click();
   await page.getByRole('row', { name: 'fieldtest20240110 boolean' }).locator('path').first().click();
   await page.getByRole('main').locator('svg').click();

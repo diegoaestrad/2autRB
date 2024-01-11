@@ -1,31 +1,39 @@
 import { test, expect } from '@playwright/test';
 
 
-{
+
     const d = new Date();
     let time = d.getTime();
     
-    var excecution="Test"+d.getFullYear+d.getHours+d.getMinutes
+    const excecution="Test"+d.getFullYear+d.getHours+d.getMinutes
     
     console.log("Execution on" + time)
 
-}
 
 
-test('authenticate', async ({ page }) => {
-    await page.goto('https://beta.ruggedbooksms.com/');
+
+// test('authenticate', async ({ page }) => {
+//     await page.goto('https://beta.ruggedbooksms.com/');
+//     await page.getByPlaceholder('User Name').click();
+//     await page.getByPlaceholder('User Name').press('Control+a');
+//     await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+//     await page.getByPlaceholder('User Name').press('Tab');
+//     await page.getByPlaceholder('Password').fill('password');
+//     await page.getByRole('button', { name: 'Sign In' }).click();
+//   });
+
+test('Create Admin', async ({ page }) => {
+    var caseid = "admin"
+    await page.goto('https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/');
     await page.getByPlaceholder('User Name').click();
     await page.getByPlaceholder('User Name').press('Control+a');
     await page.getByPlaceholder('User Name').fill('admin@rbms.com');
     await page.getByPlaceholder('User Name').press('Tab');
     await page.getByPlaceholder('Password').fill('password');
-    await page.getByRole('button', { name: 'Sign In' }).click();
-  });
-
-test('Create Admin', async ({ page }) => {
-    var caseid = "admin"
+    await page.getByPlaceholder('Password').press('Enter');
     await page.locator('div').filter({ hasText: /^User$/ }).click();
     await page.getByRole('link', { name: 'Manage User' }).click();
+
     await page.getByRole('button', { name: 'Create New User' }).click();
     await page.getByPlaceholder('First name').click();
     await page.getByPlaceholder('First name').fill(excecution+caseid);
@@ -41,8 +49,16 @@ test('Create Admin', async ({ page }) => {
 
 test('Create Manager', async ({ page }) => {
     var caseid = "Manager"
+    await page.goto('https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/');
+    await page.getByPlaceholder('User Name').click();
+    await page.getByPlaceholder('User Name').press('Control+a');
+    await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+    await page.getByPlaceholder('User Name').press('Tab');
+    await page.getByPlaceholder('Password').fill('password');
+    await page.getByPlaceholder('Password').press('Enter');
     await page.locator('div').filter({ hasText: /^User$/ }).click();
     await page.getByRole('link', { name: 'Manage User' }).click();
+
     await page.getByRole('button', { name: 'Create New User' }).click();
     await page.getByPlaceholder('First name').click();
     await page.getByPlaceholder('First name').fill(excecution+caseid);
@@ -57,8 +73,16 @@ test('Create Manager', async ({ page }) => {
 
 test('Create Operator', async ({ page }) => {
     var caseid = "Operator"
+    await page.goto('https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/');
+    await page.getByPlaceholder('User Name').click();
+    await page.getByPlaceholder('User Name').press('Control+a');
+    await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+    await page.getByPlaceholder('User Name').press('Tab');
+    await page.getByPlaceholder('Password').fill('password');
+    await page.getByPlaceholder('Password').press('Enter');
     await page.locator('div').filter({ hasText: /^User$/ }).click();
     await page.getByRole('link', { name: 'Manage User' }).click();
+
     await page.getByRole('button', { name: 'Create New User' }).click();
     await page.getByPlaceholder('First name').click();
     await page.getByPlaceholder('First name').fill(excecution+caseid);
@@ -73,8 +97,16 @@ test('Create Operator', async ({ page }) => {
 
 test('Create Purchasing Manager', async ({ page }) => {
     var caseid = "PurchasingManager"
+    await page.goto('https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/');
+    await page.getByPlaceholder('User Name').click();
+    await page.getByPlaceholder('User Name').press('Control+a');
+    await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+    await page.getByPlaceholder('User Name').press('Tab');
+    await page.getByPlaceholder('Password').fill('password');
+    await page.getByPlaceholder('Password').press('Enter');
     await page.locator('div').filter({ hasText: /^User$/ }).click();
     await page.getByRole('link', { name: 'Manage User' }).click();
+
     await page.getByRole('button', { name: 'Create New User' }).click();
     await page.getByPlaceholder('First name').click();
     await page.getByPlaceholder('First name').fill(excecution+caseid);
@@ -89,8 +121,16 @@ test('Create Purchasing Manager', async ({ page }) => {
 
 test('Create Warehouse Manager', async ({ page }) => {
     var caseid = "WarehouseManager"
+    await page.goto('https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/');
+    await page.getByPlaceholder('User Name').click();
+    await page.getByPlaceholder('User Name').press('Control+a');
+    await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+    await page.getByPlaceholder('User Name').press('Tab');
+    await page.getByPlaceholder('Password').fill('password');
+    await page.getByPlaceholder('Password').press('Enter');
     await page.locator('div').filter({ hasText: /^User$/ }).click();
     await page.getByRole('link', { name: 'Manage User' }).click();
+
     await page.getByRole('button', { name: 'Create New User' }).click();
     await page.getByPlaceholder('First name').click();
     await page.getByPlaceholder('First name').fill(excecution+caseid);
@@ -105,8 +145,16 @@ test('Create Warehouse Manager', async ({ page }) => {
 
 test('Create Tech Manager', async ({ page }) => {
     var caseid = "TechManager"
+    await page.goto('https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/');
+    await page.getByPlaceholder('User Name').click();
+    await page.getByPlaceholder('User Name').press('Control+a');
+    await page.getByPlaceholder('User Name').fill('admin@rbms.com');
+    await page.getByPlaceholder('User Name').press('Tab');
+    await page.getByPlaceholder('Password').fill('password');
+    await page.getByPlaceholder('Password').press('Enter');
     await page.locator('div').filter({ hasText: /^User$/ }).click();
     await page.getByRole('link', { name: 'Manage User' }).click();
+    
     await page.getByRole('button', { name: 'Create New User' }).click();
     await page.getByPlaceholder('First name').click();
     await page.getByPlaceholder('First name').fill(excecution+caseid);
