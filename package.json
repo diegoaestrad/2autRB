@@ -6,7 +6,6 @@
   "scripts": {
     "test": "npx playwright test",
     "test:debug": "npx playwright test --debug"
-    //, "upload": "git add . && git commit -m 'fast upload' && git push"
   },
   "keywords": [],
   "author": "",

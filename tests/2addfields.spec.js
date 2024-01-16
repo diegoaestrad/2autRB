@@ -1,14 +1,15 @@
 import { test, expect } from '@playwright/test';
 
-{
-  const d = new Date();
-  let time = d.getTime();
-  
-  var excecution="Test"+d.getFullYear+"0"
-  
-  console.log("Execution on" + time)
+    const d = new Date();
+    let time = d.getTime();
+    const excecution="Test"+d.getFullYear+"0"
+    console.log("Execution on" + time);
 
-}
+const URL_TEST = [
+  URL_TEST[0]
+];
+//1authenticationases.spec
+
 test('authenticate', async ({ page }) => {
   await page.goto('https://beta.ruggedbooksms.com/');
   await page.getByPlaceholder('User Name').click();
