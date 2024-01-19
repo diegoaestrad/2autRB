@@ -106,8 +106,8 @@ test.describe("Addinf categories", () => {
 
           await page.getByRole('button', { name: 'Create New Model' }).click();
           await page.getByPlaceholder('Model Name').click();
-          //await page.getByPlaceholder('Model Name').press('CapsLock');
           await page.getByPlaceholder('Model Name').fill(model.modelName);
+                    
           if(model.identifier != ""){
               await page.getByPlaceholder('Identifier').click();
               await page.getByPlaceholder('Identifier').fill(model.identifier);
@@ -132,44 +132,3 @@ test.describe("Addinf categories", () => {
   });
 
   });
-
-//});
-
-
-////
-
-
-// import { test, expect } from '@playwright/test';
-
-// test('test', async ({ page }) => {
-//   await page.goto('http://localhost:5173/');
-//   await page.goto('http://localhost:5173/#/sign-in?redirectUrl=/');
-//   await page.getByPlaceholder('User Name').click();
-//   await page.getByPlaceholder('User Name').fill('admin@rbms.com');
-//   await page.getByPlaceholder('User Name').press('Tab');
-//   await page.getByPlaceholder('Password').click();
-//   await page.getByPlaceholder('Password').fill('password');
-//   await page.getByRole('button', { name: 'Sign In' }).click();
-//   await page.getByText('Sales OverviewView your current sales & summaryFilter').click();
-//   await page.getByRole('link', { name: 'Manage Model' }).click();
-//   await page.getByRole('heading', { name: 'Manage Model' }).click();
-//   await page.getByText('Seamlessly Manage Model with').click();
-//   await page.locator('div').filter({ hasText: /^Manage ModelSeamlessly Manage Model with Precision and Ease$/ }).first().click();
-//   await page.getByRole('main').locator('div').filter({ hasText: 'Manage ModelSeamlessly Manage' }).first().click();
-//   await page.locator('div').filter({ hasText: /^0adminadmin@rbms\.com$/ }).first().click();
-//   await page.locator('.side-nav-content > div > div').first().click();
-//   await page.getByRole('link', { name: 'Manage Model' }).click();
-//   await page.getByRole('button', { name: 'Create New Model' }).click();
-//   await page.getByPlaceholder('Model Name').click();
-//   await page.getByPlaceholder('Model Name').fill('cf-31');
-//   await page.getByPlaceholder('Identifier').click();
-//   await page.getByRole('main').locator('svg').click();
-//   await page.getByText('Laptop', { exact: true }).click();
-//   await page.getByPlaceholder('Description').click();
-//   await page.getByPlaceholder('Description').fill('descriptionddd');
-//   await page.getByLabel('').check();
-//   await page.getByRole('button', { name: 'Save' }).click();
-//   await page.getByPlaceholder('Model Name').click();
-//   await page.getByPlaceholder('Model Name').fill('cf-32');
-//   await page.getByRole('button', { name: 'Save' }).click();
-// });

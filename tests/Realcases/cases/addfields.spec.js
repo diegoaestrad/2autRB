@@ -272,9 +272,7 @@ test.describe("Addinf fields", () => {
     const PASSWORD_CASES = ["password", "wrongpazswerd"];
 
     page = await browser.newPage();
-    // test('Login Success', async ({ page }) => {
     await page.goto(URL_TEST);
-    //await page.goto('http://localhost:5173/#/sign-in?redirectUrl=/');
     await page.getByPlaceholder("User Name").click();
     await page.getByPlaceholder("User Name").fill("admin@rbms.com");
     await page.getByPlaceholder("Password").click();
@@ -285,7 +283,6 @@ test.describe("Addinf fields", () => {
       .locator("div")
       .filter({ hasText: /^Field Management$/ })
       .click();
-    // });
   });
 
   test.afterAll(async () => {

@@ -72,17 +72,12 @@ test.describe("Addinf categories", () => {
     await page.getByRole("button", { name: "Sign In" }).click();
     await expect(page).toHaveURL("http://localhost:5173/#/app/sales/dashboard");
     await page.getByRole('link', { name: 'Manage Category' }).click();
-
-    //await page.locator("div").filter({ hasText: /^Field Management$/ }).click();
-
-    // });
+    
   });
 
   test.afterAll(async () => {
     await page.close();
   });
-
-  //test('test', async ({ page }) => {
 
     testaddCategory.forEach((category, index) => {
 
@@ -91,18 +86,14 @@ test.describe("Addinf categories", () => {
         await page.getByPlaceholder('Category Name').click();
         await page.getByPlaceholder('Category Name').fill(category.categoryName);
 
-        //await page.locator('.select-dropdown-indicator').first().click();
         await page.locator('.select__input-container').first().click();
         await page.getByText(category.categoryGroup, { exact: true }).click();
 
         if(category.parentCategoryGroup != ""){
-            //await page.locator('.select-dropdown-indicator').first().click();
             await page.locator('.select__input-container').first().click();
             await page.getByText(category.parentCategoryGroup, { exact: true }).click();
         }
 
-        //await page.getByText('*Data LevelSelect...*Field').click();
-        //await page.locator('.md\\:col-span-1\\/4').click();
         await page.getByRole('main').locator('svg').nth(4).click();
 
         await page.locator('div:nth-child(3) > div > .select > .select__control > .select__value-container > .select__input-container').click();
@@ -130,7 +121,5 @@ test.describe("Addinf categories", () => {
   });
 
   });
-
-//});
 
 
