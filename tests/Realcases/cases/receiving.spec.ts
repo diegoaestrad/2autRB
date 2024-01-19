@@ -10,31 +10,7 @@ const createReceiving = [
   { receivingType : "RMA", identifier : "", supplier : "", courier : "", trackingNumber : "", Description : "", quantityToReceive : "", quantityReceived : "", partiallyReceived : "", fullyReceived : "", notes : "" },
   { receivingType : "Service", identifier : "", supplier : "", courier : "", trackingNumber : "", Description : "", quantityToReceive : "", quantityReceived : "", partiallyReceived : "", fullyReceived : "", notes : "" },
 
-
-
-
-
-{
-
-
-
-
-    receivingType : "",
-    identifier : "",
-    supplier : "",
-    courier : "",
-    trackingNumber : "",
-    Description : "",
-    quantityToReceive : "",
-    quantityReceived : "",
-    partiallyReceived : "",
-    fullyReceived : "",
-    //uploadImage
-    //takePicture
-    notes : "",
-
-
-}
+//{ receivingType : "",    identifier : "",    supplier : "",    courier : "",    trackingNumber : "",    Description : "",    quantityToReceive : "",    quantityReceived : "",    partiallyReceived : "",    fullyReceived : "",    notes : "", },
   
 
 ];
