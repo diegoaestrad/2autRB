@@ -26,11 +26,18 @@ test("Login Failed with wrong password", async ({ page }) => {
   await page.locator("[name='password']").focus();
   await page.locator("[name='password']").fill("password2");
 
-  await page.locator("[type='submit']").click();
+  //await page.locator("[type='submit']").click();
 
-  await expect(page).toHaveURL(
-    "https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/"
-  );
+  await page.getByRole("button", { name: "Sign In" }).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Username and password do not match$/ })
+    .first()
+    .click();
+  //await page.getByText('Welcome back!Please enter your credentials to sign in!Username and password do').click();
+  //await expect(page).toHaveURL("https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/");
+  //await page.getByText("User not found").click();
+  //await page.getByText('Welcome back!Please enter your credentials to sign in!User not foundUser').click();
 });
 
 test("Login Failed with wrong username", async ({ page }) => {
@@ -44,9 +51,10 @@ test("Login Failed with wrong username", async ({ page }) => {
 
   await page.locator("[type='submit']").click();
 
-  await expect(page).toHaveURL(
-    "https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/"
-  );
+  //await expect(page).toHaveURL("https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/");
+  await page.getByRole("button", { name: "Sign In" }).click();
+  //await page.locator('div').filter({ hasText: /^Username and password do not match$/ }).first().click();
+  await page.getByText("User not found").click();
 });
 
 test("Login Failed with wrong username and password", async ({ page }) => {
@@ -60,9 +68,19 @@ test("Login Failed with wrong username and password", async ({ page }) => {
 
   await page.locator("[type='submit']").click();
 
-  await expect(page).toHaveURL(
-    "https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/"
-  );
+  //await expect(page).toHaveURL("https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/");
+
+  await page.getByRole("button", { name: "Sign In" }).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^User not found$/ })
+    .first()
+    .click();
+  await page
+    .getByText(
+      "Welcome back!Please enter your credentials to sign in!User not foundUser"
+    )
+    .click();
 });
 
 test("Login Failed with empty username and correct password", async ({
@@ -78,9 +96,13 @@ test("Login Failed with empty username and correct password", async ({
 
   await page.locator("[type='submit']").click();
 
-  await expect(page).toHaveURL(
-    "https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/"
-  );
+  //await expect(page).toHaveURL("https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/");
+  await page.getByRole("button", { name: "Sign In" }).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^User not found$/ })
+    .first()
+    .click();
 });
 
 test("Login Failed with correct username and empty password", async ({
@@ -96,7 +118,7 @@ test("Login Failed with correct username and empty password", async ({
 
   await page.locator("[type='submit']").click();
 
-  await expect(page).toHaveURL(
-    "https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/"
-  );
+  //await expect(page).toHaveURL("https://beta.ruggedbooksms.com/#/sign-in?redirectUrl=/");
+  await page.getByRole("button", { name: "Sign In" }).click();
+  await page.getByText("Please enter your password").click();
 });
