@@ -44,6 +44,7 @@ test.describe("Addinf categories", () => {
       await page.getByPlaceholder("MPN Name").click();
       await page.getByPlaceholder("MPN Name").fill(model.mpnName);
 
+      await page.getByRole("main").locator("svg").click();
       await page.locator(".select-dropdown-indicator").click();
       await page.getByText(model.modelMpn, { exact: true }).click();
 

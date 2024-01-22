@@ -6,10 +6,10 @@ const password = "password";
 
 
 const testAddModel = [
-    { modelName : "CF-31",identifier : "",category : "Laptop",description : "cf-31 description",isControlled : "true",},
-    { modelName : "CF-19MK1", identifier : "", category : "Laptop", description : "CF-19 MK1", isControlled : "true", }, 		
-    { modelName : "CF-19 MK2", identifier : "", category : "Laptop", description : "CF-19 MK2", isControlled : "true", }, 		
-    { modelName : "CF-19 MK3", identifier : "", category : "Laptop", description : "CF-19 MK3", isControlled : "true", }, 	
+    { modelName : "CF-31",identifier : "",category : "Laptop",description : "cf-31 description",isControlled : true, },
+    { modelName : "CF-19 MK1", identifier : "", category : "Laptop", description : "CF-19 MK1", isControlled : true, }, 		
+    { modelName : "CF-19 MK2", identifier : "", category : "Laptop", description : "CF-19 MK2", isControlled : true, }, 		
+    { modelName : "CF-19 MK3", identifier : "", category : "Laptop", description : "CF-19 MK3", isControlled : true, }, 	
 ];
 
 const totalModels = [
@@ -119,11 +119,10 @@ test.describe("Addinf categories", () => {
           await page.getByPlaceholder('Description').click();
           await page.getByPlaceholder('Description').fill(model.description);
 
-          if(model.isControlled == "true"){
-            await page.getByLabel('').check();
+          if(model.isControlled){
+            await page.getByRole('checkbox',{name : 'needsMpn'}).check();
           }else{
-            await page.getByLabel('').uncheck();
-
+            await page.getByRole('checkbox',{name : 'needsMpn'}).uncheck();
           }          
           await page.getByRole('button', { name: 'Save' }).click();
 
