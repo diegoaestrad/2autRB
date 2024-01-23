@@ -6,7 +6,7 @@ const password = "password";
 
 
 const testAddModel = [
-    { modelName : "CF-31",identifier : "",category : "Laptop",description : "cf-31 description",isControlled : true, },
+    { modelName : "CF-31 MK4",identifier : "",category : "Laptop",description : "CF-31 MK4 DESC",isControlled : true, },
     { modelName : "CF-19 MK1", identifier : "", category : "Laptop", description : "CF-19 MK1", isControlled : true, }, 		
     { modelName : "CF-19 MK2", identifier : "", category : "Laptop", description : "CF-19 MK2", isControlled : true, }, 		
     { modelName : "CF-19 MK3", identifier : "", category : "Laptop", description : "CF-19 MK3", isControlled : true, }, 	
@@ -100,7 +100,7 @@ test.describe("Addinf categories", () => {
 
   //test('test', async ({ page }) => {
 
-    testAddModel.forEach((model, index) => {
+  totalModels.forEach((model, index) => {
 
     test(`Test Case ${index + 1} ${model.modelName}`, async () => {
 
@@ -119,11 +119,19 @@ test.describe("Addinf categories", () => {
           await page.getByPlaceholder('Description').click();
           await page.getByPlaceholder('Description').fill(model.description);
 
-          if(model.isControlled){
-            await page.getByRole('checkbox',{name : 'needsMpn'}).check();
-          }else{
-            await page.getByRole('checkbox',{name : 'needsMpn'}).uncheck();
-          }          
+           
+          if (model.isControlled) {
+            await page.locator('.checkbox-label').click();
+            //await page.getByLabel('').uncheck();
+            await page.getByLabel('').check();
+            await page.locator('div').filter({ hasText: /^Is Manufacturing Part Number Controlled \?$/ }).nth(1).click();
+            //await page.getByRole('checkbox',{name : 'needsMpn'}).check();
+          }else{await page.locator('.checkbox-label').click();
+            //await page.getByLabel('').check();
+            await page.getByLabel('').uncheck();
+
+
+          }
           await page.getByRole('button', { name: 'Save' }).click();
 
     });

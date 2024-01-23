@@ -40,17 +40,19 @@ test.describe("Addinf categories", () => {
   testMpn.forEach((model, index) => {
     test(`Test Case ${index + 1} ${model.modelName}`, async () => {
       await page.getByRole("button", { name: "Create New MPN" }).click();
-
       await page.getByPlaceholder("MPN Name").click();
+      await page.getByPlaceholder("MPN Name").press("CapsLock");
       await page.getByPlaceholder("MPN Name").fill(model.mpnName);
-
-      await page.getByRole("main").locator("svg").click();
-      await page.locator(".select-dropdown-indicator").click();
+      await page.locator(".select__input-container").click();
       await page.getByText(model.modelMpn, { exact: true }).click();
-
       await page.getByPlaceholder("Description").click();
       await page.getByPlaceholder("Description").fill(model.description);
-
+      // await page
+      //   .getByRole("main")
+      //   .locator("div")
+      //   .filter({ hasText: "Create New MPNInformation for" })
+      //   .first()
+      //   .click();
       await page.getByRole("button", { name: "Save" }).click();
     });
   });

@@ -47,7 +47,6 @@ test.describe("Addinf categories", () => {
         await page.getByRole('button', { name: 'Create New Receiving' }).click();
         //await expect(page).toHaveText("Create New Receiving");
         await page.getByRole('link', { name: 'Receiving' }).click();
-
     });
   });
 });
