@@ -1,27 +1,24 @@
 //import { test, expect, chromium } from "@playwright/test";
 import { test, expect } from "@playwright/test";
 
-// const d = new Date();
-// let time = d.getTime();
-// const excecution = "Test" + d.getFullYear + "0";
-// console.log("Execution on" + time);
-
 const URL_TEST = "http://localhost:5173/";
-// const username = "admin@rbms.com";
-// const password = "password";
+const username = "admin@rbms.com";
+const password = "password";
 
-const testaddFields = [
+const testaddFields2 = [
   {
     fieldName: "Storage Capacity",
     dataType: "integer",
     fieldGroup: "",
     fieldType: "specs",
+    isMultiple: false,
   },
   {
     fieldName: "Storage Unit",
     dataType: "string",
     fieldGroup: "",
     fieldType: "specs",
+    isMultiple: false,
   },
   {
     fieldName: "Storage Type",
@@ -259,6 +256,296 @@ const testaddFields = [
   },
 ];
 
+const testaddFields = [
+  {
+    fieldName: "Storage Capacity",
+    dataType: "integer",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Storage Unit",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Storage Type",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: true,
+  },
+  {
+    fieldName: "Storage Form Factor",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Storage Controller",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Storage Speed",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Brand",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Storage Health",
+    dataType: "percentage",
+    fieldGroup: "",
+    fieldType: "functional",
+    isMultiple: false,
+  },
+  {
+    fieldName: "RAM Capacity",
+    dataType: "integer",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "RAM Unit",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "RAM Type",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Processor Brand",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Processor Name",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Processor Number",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Processor Generation",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Processor Speed",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Ports",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Power",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "functional",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Bios Password",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "functional",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Graphics Card",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Dedicated GPU",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Dedicated GPU Model",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "# USB Ports",
+    dataType: "integer",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "WLAN",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Bluetooth",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "MK",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Audio",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "functional",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Diagnostic Utility",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "functional",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Cover",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Exist?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Cracks/Broken?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Dents?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Scratches?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Discoloration?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Screws?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Packaging?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Cleaned?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Blemish?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Dead Pixels?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Lines On Screen?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+  {
+    fieldName: "Marks On Screen?",
+    dataType: "boolean",
+    fieldGroup: "",
+    fieldType: "cosmetic",
+    isMultiple: false,
+  },
+];
+
 let page;
 
 test.describe.configure({ mode: "serial" });
@@ -267,22 +554,23 @@ test.describe("Addinf fields", () => {
   test.beforeAll(async ({ browser }) => {
     const URL_TEST = "http://localhost:5173/#/app/sales/dashboard";
 
-    const USERS_CASES = ["admin@rbms.com", "falseuser@nodomain.ron"];
+    // const USERS_CASES = ["admin@rbms.com", "falseuser@nodomain.ron"];
 
-    const PASSWORD_CASES = ["password", "wrongpazswerd"];
+    // const PASSWORD_CASES = ["password", "wrongpazswerd"];
 
     page = await browser.newPage();
     await page.goto(URL_TEST);
     await page.getByPlaceholder("User Name").click();
-    await page.getByPlaceholder("User Name").fill("admin@rbms.com");
+    await page.getByPlaceholder("User Name").fill(username);
     await page.getByPlaceholder("Password").click();
-    await page.getByPlaceholder("Password").fill("password");
+    await page.getByPlaceholder("Password").fill(password);
     await page.getByRole("button", { name: "Sign In" }).click();
     await expect(page).toHaveURL("http://localhost:5173/#/app/sales/dashboard");
     await page
       .locator("div")
       .filter({ hasText: /^Field Management$/ })
       .click();
+    await page.getByRole("link", { name: "Fields" }).click();
   });
 
   test.afterAll(async () => {
@@ -291,7 +579,6 @@ test.describe("Addinf fields", () => {
 
   testaddFields.forEach((fielditems, index) => {
     test(`Test Case ${index + 1} ${fielditems.fieldName}`, async () => {
-      await page.getByRole("link", { name: "Fields" }).click();
       await page.getByRole("button", { name: "Create New Field" }).click();
 
       await page.getByPlaceholder("Field Name").click();
@@ -306,8 +593,13 @@ test.describe("Addinf fields", () => {
         )
         .click();
       await page.getByText(fielditems.fieldType, { exact: true }).click();
-      await page.getByLabel("").check();
-      await page.getByLabel("").uncheck();
+
+      if (fielditems.isMultiple) {
+        await page.getByLabel("").check();
+      } else {
+        await page.getByLabel("").uncheck();
+      }
+
       await page.getByRole("button", { name: "Save" }).click();
     });
   });
