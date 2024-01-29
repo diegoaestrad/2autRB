@@ -1,5 +1,5 @@
-//import { test, expect, chromium } from "@playwright/test";
-import { test, expect } from "@playwright/test";
+import { test, expect, chromium } from "@playwright/test";
+//import { test, expect } from "@playwright/test";
 
 const URL_TEST = "http://localhost:5173/";
 const username = "admin@rbms.com";
@@ -265,11 +265,18 @@ const testaddFields = [
     isMultiple: false,
   },
   {
-    fieldName: "Storage Unit",
+    fieldName: "AMP",
     dataType: "string",
     fieldGroup: "",
     fieldType: "specs",
     isMultiple: false,
+  },
+  {
+    fieldName: "Storage Unit",
+    dataType: "string",
+    fieldGroup: "",
+    fieldType: "specs",
+    isMultiple: true,
   },
   {
     fieldName: "Storage Type",
@@ -579,6 +586,7 @@ test.describe("Addinf fields", () => {
 
   testaddFields.forEach((fielditems, index) => {
     test(`Test Case ${index + 1} ${fielditems.fieldName}`, async () => {
+      await page.waitForTimeout(500);
       await page.getByRole("button", { name: "Create New Field" }).click();
 
       await page.getByPlaceholder("Field Name").click();
