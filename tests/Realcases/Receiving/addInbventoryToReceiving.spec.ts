@@ -8,23 +8,6 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const { RBMS_URL_TEST, RBMS_USERNAME, RBMS_PASSWORD } = process.env
 
-// import { URL_TEST } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
-// import { username } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
-// import { password } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
-
-// console.log(URL_TEST);
-// console.log(username);
-// console.log(password);
-
-// console.log(process.env.RBMS_URL_TEST);
-// console.log(process.env.RBMS_USERNAME);
-// console.log(process.env.RBMS_PASSWORD);
-
-
-// const URL_TEST = "http://localhost:5173/";
-// const username = "admin@rbms.com";
-// const password = "password";
-
 const addInventory = [
     { category: "laptop", model: "cf-33 mk1", mpn: "CF-33ACBNNDN", condition: "used", post: "Passed", serialNumber: "SN000000001", },
     { category: "laptop", model: "cf-33 mk1", mpn: "CF-33ACBNNDN", condition: "used", post: "Passed", serialNumber: "SN000000002" },

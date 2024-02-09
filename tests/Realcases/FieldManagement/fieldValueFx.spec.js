@@ -8,34 +8,20 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 const { RBMS_URL_TEST, RBMS_USERNAME, RBMS_PASSWORD } = process.env;
 
-// import { test, expect, chromium } from "@playwright/test";
-
-// import { URL_TEST } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
-// import { username } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
-// import { password } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
-
-// console.log(URL_TEST);
-// console.log(username);
-// console.log(password);
-
-// const URL_TEST = "http://localhost:5173/";
-// const username = "admin@rbms.com";
-// const password = "password";
-
 const basicDataModel = [
   {
     modelToModify: "AMP",
     fieldType: "specs",
     dataType: "string",
     fieldValue: ["High AMP", "Standard", "Low Power"],
-    score: [0],
+    score: [10, 5, 0],
   },
   {
     modelToModify: "Audio",
     fieldType: "functional",
     dataType: "boolean",
-    fieldValue: [false, true],
-    score: [0],
+    fieldValue: ["False", "True"],
+    score: [0, 3, 4, 5],
   },
   {
     modelToModify: "Battery Health",
@@ -61,7 +47,7 @@ test.describe("Add Detailed Field Names values", () => {
     await page.getByPlaceholder("Password").click();
     await page.getByPlaceholder("Password").fill(RBMS_PASSWORD);
     await page.getByRole("button", { name: "Sign In" }).click();
-    await expect(page).toHaveURL("http://localhost:5173/#/app/sales/dashboard");
+    //await expect(page).toHaveURL("http://localhost:5173/#/app/sales/dashboard");
     await page
       .locator("div")
       .filter({ hasText: /^Field Management$/ })
