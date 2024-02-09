@@ -1,9 +1,17 @@
 import { test, expect, chromium } from "@playwright/test";
 //import { test, expect } from "@playwright/test";
 
-const URL_TEST = "http://localhost:5173/";
-const username = "admin@rbms.com";
-const password = "password";
+import { URL_TEST } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
+import { username } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
+import { password } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
+
+console.log(URL_TEST);
+console.log(username);
+console.log(password);
+
+// const URL_TEST = "http://localhost:5173/";
+// const username = "admin@rbms.com";
+// const password = "password";
 
 const testaddFields2 = [
   {
