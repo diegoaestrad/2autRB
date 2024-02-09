@@ -8,20 +8,6 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 const { RBMS_URL_TEST, RBMS_USERNAME, RBMS_PASSWORD } = process.env;
 
-// import { test, expect, chromium } from "@playwright/test";
-
-// import { URL_TEST } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
-// import { username } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
-// import { password } from "C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts";
-
-// console.log(URL_TEST);
-// console.log(username);
-// console.log(password);
-
-// const URL_TEST = "http://localhost:5173/";
-// const username = "admin@rbms.com";
-// const password = "password";
-
 const testMpn = [
   {
     mpnName: "CF-33ACBNNDM",

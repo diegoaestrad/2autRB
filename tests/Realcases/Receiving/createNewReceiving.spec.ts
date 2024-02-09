@@ -8,28 +8,11 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const { RBMS_URL_TEST, RBMS_USERNAME, RBMS_PASSWORD } = process.env
 
-
-// import { test, expect, webkit } from "@playwright/test";
-
-// // archivo2.js
-// import { URL_TEST } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
-// import { username } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
-// import { password } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
-
-// console.log(URL_TEST);
-// console.log(username);
-// console.log(password);
-
-
-// const URL_TEST = "http://localhost:5173/";
-// const username = "admin@rbms.com";
-// const password = "password";
-
 const createReceiving = [
 
-  { receivingType: "PO", identifier: "567", supplier: "d&d SUPPLIER TECH", courier: "UPS", trackingNumber: "AXPUI1212", Description: "Description D&D axpui1", quantityToReceive: 3, quantityReceived: 3, partiallyReceived: false, fullyReceived: true, notes: "Description D&D axpui1" },
-  { receivingType: "RMA", identifier: "7", supplier: "d&d SUPPLIER INC", courier: "UPS", trackingNumber: "AXPUI1231", Description: "Description D&D axpui2", quantityToReceive: 2, quantityReceived: 1, partiallyReceived: true, fullyReceived: true, notes: "Description D&D axpui2" },
-  { receivingType: "Service", identifier: "9", supplier: "d&d SUPPLIER LTD", courier: "UPS", trackingNumber: "AXPUI1234", Description: "Description D&D axpui3", quantityToReceive: 4, quantityReceived: 5, partiallyReceived: true, fullyReceived: true, notes: "Description D&D axpui3" },
+  { receivingType: "PO", identifier: "999", supplier: "d&d SUPPLIER TECH", courier: "UPS", trackingNumber: "AXPUI1212", Description: "Description D&D axpui1", quantityToReceive: 23, quantityReceived: 23, partiallyReceived: false, fullyReceived: true, notes: "Description D&D axpui1" },
+  { receivingType: "RMA", identifier: "7", supplier: "d&d SUPPLIER INC", courier: "UPS", trackingNumber: "AXPUI1231", Description: "Description D&D axpui2", quantityToReceive: 22, quantityReceived: 21, partiallyReceived: true, fullyReceived: true, notes: "Description D&D axpui2" },
+  { receivingType: "Service", identifier: "9", supplier: "d&d SUPPLIER LTD", courier: "UPS", trackingNumber: "AXPUI1234", Description: "Description D&D axpui3", quantityToReceive: 24, quantityReceived: 22, partiallyReceived: true, fullyReceived: true, notes: "Description D&D axpui3" },
 
   //{ receivingType : "",    identifier : "",    supplier : "",    courier : "",    trackingNumber : "",    Description : "",    quantityToReceive : "",    quantityReceived : "",    partiallyReceived : "",    fullyReceived : "",    notes : "", },
 

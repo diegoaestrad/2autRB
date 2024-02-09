@@ -8,14 +8,6 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 const { RBMS_URL_TEST, RBMS_USERNAME, RBMS_PASSWORD } = process.env;
 
-// import { expect, test } from "@playwright/test";
-
-// const URL_TEST = "http://localhost:5173/#/app/sales/dashboard";
-
-// const USERS_CASES = ["admin@rbms.com", "falseuser@nodomain.ron"];
-
-// const PASSWORD_CASES = ["password", "wrongpazswerd"];
-
 test("Login Success", async ({ page }) => {
   await page.goto(RBMS_URL_TEST);
   await page.getByPlaceholder("User Name").click();
