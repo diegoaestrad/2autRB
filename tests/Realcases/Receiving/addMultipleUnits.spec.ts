@@ -51,42 +51,33 @@ test.describe("Add Detailed Field Names values", () => {
     });
 
     basicDataModel.forEach((model, index) => {
-        test(`Test Case ${index + 1} ${model.modelToModify}`, async () => {
-            await page.getByRole("cell", { name: model.modelToModify }).click();
-            console.log(`Model to Modify: ${model.modelToModify}`);
+        test(`Test Case ${index + 1} ${model.sn}`, async () => {
+            await page.getByRole('link', { name: 'Receiving' }).click();
+            await page.getByRole('row', { name: 'Edit 1 PO - 999 d&d SUPPLIER' }).getByRole('button').first().click();
+            await page.getByRole('button', { name: 'Add to Inventory' }).click();
 
-            await page
-                .getByRole("row", {
-                    name:
-                        model.modelToModify + " " + model.dataType + " " + model.fieldType,
-                })
-                .getByRole("button")
-                .first()
-                .click();
-            console.log(
-                `Model name to Modify: ${model.modelToModify}` +
-                "->" +
-                model.modelToModify +
-                " " +
-                model.dataType +
-                " " +
-                model.fieldType
-            );
 
-            // Type the Field Value and Score
-            for (let i = 0; i < model.fieldValue.length; i++) {
-                await page.getByPlaceholder("Field Value").click();
-                await page
-                    .getByPlaceholder("Field Value")
-                    .fill(String(model.fieldValue[i]));
+            await page.locator('div').filter({ hasText: /^\*CategorySelect Category$/ }).locator('svg').click();
+            await page.locator('#react-select-2-option-0').getByText(model.Category).click();
 
-                await page.getByPlaceholder("Score").click();
-                await page.getByPlaceholder("Score").fill(String(model.score[i]));
+            await page.locator('div').filter({ hasText: /^\*ModelSelect model$/ }).locator('svg').click();
+            await page.locator('#react-select-3-option-0').getByText('CF-33 MK1').click();
 
-                await page.getByRole("button", { name: "Save" }).click();
-            }
 
-            console.log("\n"); // Separator between elements
+            await page.locator('div').filter({ hasText: /^MPNSelect MPN$/ }).locator('svg').click();
+            await page.locator('#react-select-4-option-1').getByText('CF-33BWABZ1M').click();
+
+
+            await page.locator('div').filter({ hasText: /^\*ConditionSelect Condition$/ }).locator('svg').click();
+            await page.locator('#react-select-5-option-1').getByText('Used').click();
+
+            await page.locator('div').filter({ hasText: /^\*PostSelect post$/ }).locator('svg').click();
+            await page.locator('#react-select-6-option-0').getByText('Passed').click();
+
+            await page.getByPlaceholder('serial number').click();
+            await page.getByPlaceholder('serial number').fill(model.sn);
+            await page.locator('form').getByRole('button', { name: 'Save' }).click();
+
         });
     });
 });
