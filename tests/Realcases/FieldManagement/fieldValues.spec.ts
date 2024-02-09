@@ -1,22 +1,35 @@
-import { test, expect, chromium } from '@playwright/test';
+import { test, expect, webkit } from "@playwright/test";
+import dotenv from "dotenv";
+import path from "path";
+// Read from default ".env" file.
+dotenv.config();
+// Alternatively, read from "../my.env" file.
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-const URL_TEST = "http://localhost:5173/";
-const username = "admin@rbms.com";
-const password = "password";
+const { RBMS_URL_TEST, RBMS_USERNAME, RBMS_PASSWORD } = process.env;
+
+
+
+// import { test, expect, chromium } from '@playwright/test';
+
+// import { URL_TEST } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
+// import { username } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
+// import { password } from 'C:\\Users\\User\\RB2deb\\2autRB\\playwright.config.ts';
+
+// console.log(URL_TEST);
+// console.log(username);
+// console.log(password);
+
+
+// const URL_TEST = "http://localhost:5173/";
+// const username = "admin@rbms.com";
+// const password = "password";
+
 
 const basicDataModel = [
-  { modelToModify: "AMP", fieldType: "specs", dataType: "string", fieldValue: ["High AMP", "Standard", "Low Power"] },
-  { modelToModify: "Audio", fieldType: "functional", dataType: "boolean", fieldValue: [false, true] },
-  { modelToModify: "Barcode Reader", fieldType: "functional", dataType: "boolean", fieldValue: [false, true] },
-  { modelToModify: "Barcode Reader", fieldType: "specs", dataType: "boolean", fieldValue: [false, true] },
-  { modelToModify: "Battery Health", fieldType: "functional", dataType: "percentage", fieldValue: [100] },
-  { modelToModify: "Battery Report", fieldType: "specs", dataType: "opentext", fieldValue: ["https://example.com/battery-report"] },
-  { modelToModify: "Battery type", fieldType: "specs", dataType: "string", fieldValue: ["Lightweight", "Li-ion", "LongLife"] },
-  { modelToModify: "Bios Password", fieldType: "functional", dataType: "boolean", fieldValue: [false, true] },
-  { modelToModify: "Blemish", fieldType: "cosmetic", dataType: "string", fieldValue: ["Minor", "None"] },
-  { modelToModify: "Bluetooth", fieldType: "functional", dataType: "boolean", fieldValue: [false, true, true] },
-  { modelToModify: "Brand", fieldType: "specs", dataType: "string", fieldValue: ["Crucial", "Dell", "Lenovo", "Panasonic", "Samsung", "Seagate"] },
-
+  { modelToModify: "AMP", fieldType: "specs", dataType: "string", fieldValue: ["High AMPr", "Standard", "Low Power"], score: [] },
+  { modelToModify: "Audio", fieldType: "functional", dataType: "boolean", fieldValue: [false, true], score: [] },
+  { modelToModify: "Battery Health", fieldType: "functional", dataType: "percentage", fieldValue: [100], score: [] },
 ];
 
 let page;
@@ -31,11 +44,11 @@ test.describe("Add Detailed Field Names values", () => {
     page = await browser.newPage();
     // test('Login Success', async ({ page }) => {
 
-    await page.goto(URL_TEST);
+    await page.goto(RBMS_URL_TEST);
     await page.getByPlaceholder("User Name").click();
-    await page.getByPlaceholder("User Name").fill(username);
+    await page.getByPlaceholder("User Name").fill(RBMS_USERNAME);
     await page.getByPlaceholder("Password").click();
-    await page.getByPlaceholder("Password").fill(password);
+    await page.getByPlaceholder("Password").fill(RBMS_PASSWORD);
     await page.getByRole("button", { name: "Sign In" }).click();
     await expect(page).toHaveURL("http://localhost:5173/#/app/sales/dashboard");
     await page.locator("div").filter({ hasText: /^Field Management$/ }).click();
@@ -53,77 +66,83 @@ test.describe("Add Detailed Field Names values", () => {
   basicDataModel.forEach((model, index) => {
 
     test(`Test Case ${index + 1} ${model.modelToModify}`, async () => {
+      // await page.getByRole('link', { name: 'Fields' }).click();
+      await page.getByRole('button', { name: 'Create New Field' }).click();
+      await page.getByPlaceholder('Field Name').click();
+      await page.getByPlaceholder('Field Name').fill('newFieldName');
+      await page.locator('.select__input-container').first().click();
+      await page.locator('#react-select-3-option-0').click();
+      await page.locator('div:nth-child(3) > div > .select > .select__control > .select__value-container > .select__input-container').click();
+      await page.getByRole('main').locator('svg').nth(1).click();
+      await page.locator('div').filter({ hasText: /^\*Field TypeField Type$/ }).locator('svg').click();
+      await page.getByText('specs', { exact: true }).click();
+      await page.getByRole('button', { name: 'Save' }).click();
 
-      // 1st find the required field to modify
+      await page.getByRole('heading', { name: 'Manage Fields' }).click();
 
-      //{ modelToModify: "Brand", fieldType: "specs", dataType: "string", fieldValue: ["Crucial", "Dell", "Lenovo", "Panasonic", "Samsung", "Seagate"] }
+      await page.getByText('Field', { exact: true }).click();
 
-      // Iterar sobre la estructura principal
-      // for (const item of basicDataModel) {
+      await page.getByLabel('100').click();
+      await page.getByRole('option', { name: '300' }).click();
 
-      console.log(`Model to Modify: ${model.modelToModify}`);
-      console.log(`Field Type: ${model.fieldType}`);
-      console.log(`Data Type: ${model.dataType}`);
-      console.log(`Data Type: ${model.fieldValue}`);
+      await page.getByRole('cell', { name: model.modelToModify }).click();
 
-      // Verificar si hay valores múltiples en fieldValues
-      if (model.fieldValue && model.fieldValue.length > 0) {
-        // Iterar sobre los elementos de fieldValue
-        for (const value of model.fieldValue) {
+      let fieldValToModify = model.modelToModify + " " + model.dataType + "";
 
-          // add field value
-          //console.log(`Field Value: ${value}`);
-        }
-      } else {
-        console.log(`Field Value: ${model.fieldValue}`);
-      }
+      await page.getByRole('row', { name: fieldValToModify }).getByRole('button').first().click();
 
-      console.log("\n"); // Separador entre elementos
+      await page.getByPlaceholder(model.modelToModify).click();
+
+      await page.getByPlaceholder(model.modelToModify).fill(model.fieldValue[index]);
+
+      await page.getByPlaceholder('Score').click();
+      await page.getByPlaceholder('Score').fill(model.score);
+
+      await page.getByRole('button', { name: 'Save' }).click();
+
+
+
+
+
+      // await page.getByRole('button', { name: 'Cancel' }).click();
+
+      // await page.getByRole('cell', { name: model.modelToModify }).click();
+
+      // await page.getByRole('row', { name: model.modelToModify + ' ' + model.dataType + ' ' + model.fieldType }).getByRole('button').first().click();
+      // console.log(model.modelToModify + ' ' + model.dataType + ' ' + model.fieldType);
+
+      // { modelToModify: "AMP", fieldType: "specs", dataType: "string", fieldValue: ["High AMP", "Standard", "Low Power"], score: [] },
+
+      // 3rd  type the Field Value
+      // for (const value of model.fieldValue) {
+      //   await page.getByPlaceholder(model.modelToModify).click();
+      //   await page.getByPlaceholder(model.modelToModify).fill(model.fieldValue);
+
+      //   await page.getByPlaceholder('Score').click();
+      //   await page.getByPlaceholder('Score').fill(model.score);
+
+      //   await page.getByText('Field NameData typeField').click();
+      //   await page.getByRole('button', { name: 'Save' }).click();
       // }
 
+      // Verificar si hay valores múltiples en fieldValues
+      // if (model.fieldValue && model.fieldValue.length > 0) {
+      //   // Iterar sobre los elementos de fieldValue
+      //   for (const value of model.fieldValue) {
+      //     await page.getByPlaceholder('Field Value').click();
+      //     await page.getByPlaceholder('Field Value').fill(model.fieldValue);
 
+      //     await page.getByPlaceholder('Score').click();
+      //     await page.getByPlaceholder('Score').fill(model.score);
 
-      // await page.getByRole('cell', { name: 'Storage Unit' }).click();
-      // await page.getByRole('row', { name: 'Storage Unit string specs' }).getByRole('cell').nth(1).click();
-      // await page.getByRole('row', { name: 'Storage Unit string specs' }).getByRole('cell').nth(2).click();
-      // await page.getByRole('row', { name: 'Storage Unit string specs' }).getByRole('cell').nth(3).click();
-      // await page.getByRole('row', { name: 'Storage Unit string specs' }).getByRole('button').first().click();//add value
+      //     await page.getByText('Field NameData typeField').click();
+      //     await page.getByRole('button', { name: 'Save' }).click();
+      //   }
+      // } else {
+      //   console.log(`Field Value: ${model.fieldValue}`);
+      // }
 
-      // await page.getByRole('button', { name: 'Cancel' }).click();
-
-      // await page.getByRole('row', { name: 'Storage Unit string specs' }).getByRole('button').nth(1).click();//edit value
-
-      // await page.getByRole('button', { name: 'Cancel' }).click();
-      // await page.getByRole('row', { name: 'Storage Unit string specs' }).getByRole('button').nth(2).click();//view value
-
-      // await page.getByRole('link', { name: 'Fields' }).click();
-      // await page.getByRole('link', { name: 'Field Group' }).click();
-      // await page.getByRole('link', { name: 'Fields' }).click();
-      // await page.getByRole('row', { name: 'Storage Unit string specs' }).getByRole('button').nth(3).click();//delete value
-      // //await page.getByRole('button', { name: 'Confirm' })// line ot confirm the delete value
-
-      //await page.getByRole('button', { name: 'Cancel' }).click();
-
-
-
-      // await page.getByText('Field Management').click();
-      // await page.getByRole('link', { name: 'Fields' }).click();
-      // 2nd click the add value of the specific row
-      // 3rd  type the Field Value
-      // If it requires Score : type score
-      // 4th Click Save
-      // not mandatory but ... return to Fields 
-
-
-
-
-      // console.log(model.modelToModify + ' ' + model.dataType + ' ' + model.fieldType);
-      // await page.getByRole('row', { name: model.modelToModify + ' ' + model.dataType + ' ' + model.fieldType, exact: true }).getByRole('button').first().click();
-      // await page.getByPlaceholder('Field Value').click();
-      // await page.getByPlaceholder('Field Value').fill(model.fieldValue);
-      // await page.getByRole('button', { name: 'Save' }).click();
-
-      // await page.getByRole('link', { name: 'Fields' }).click();
+      // console.log("\n"); // Separador entre elementos
 
     });
 

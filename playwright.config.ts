@@ -6,6 +6,11 @@ import { defineConfig, devices } from '@playwright/test';
  */
 // require('dotenv').config();
 
+export const URL_TEST = "http://localhost:5173/";
+export const username = "admin@rbms.com";
+export const password = "password";
+
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -29,6 +34,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+
 
   /* Configure projects for major browsers */
   projects: [
