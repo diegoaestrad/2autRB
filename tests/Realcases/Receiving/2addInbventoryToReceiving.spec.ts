@@ -9,9 +9,9 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 const { RBMS_URL_TEST, RBMS_USERNAME, RBMS_PASSWORD } = process.env
 
 const addInventory = [
-    { category: "laptop", model: "cf-33 mk1", mpn: "CF-33ACBNNDN", condition: "used", post: "Passed", serialNumber: "SN000000001", },
-    { category: "laptop", model: "cf-33 mk1", mpn: "CF-33ACBNNDN", condition: "used", post: "Passed", serialNumber: "SN000000002" },
-    { category: "laptop", model: "cf-33 mk1", mpn: "CF-33ACBNNDN", condition: "used", post: "Passed", serialNumber: "SN000000003", }
+    { category: "laptop", model: "cf-33 mk1", mpn: "CF-33ACBNNDN", condition: "used", post: "Passed", serialNumber: "SNAXPUI2131001", },
+    { category: "laptop", model: "cf-33 mk1", mpn: "CF-33ACBNNDN", condition: "used", post: "Passed", serialNumber: "SNAXPUI2131002" },
+    { category: "laptop", model: "cf-33 mk1", mpn: "CF-33ACBNNDN", condition: "used", post: "Passed", serialNumber: "SNAXPUI2131003", }
 ];
 
 let page;
@@ -50,7 +50,7 @@ test.describe("Addinf categories", () => {
 
             await page.getByRole('link', { name: 'Receiving' }).click();
 
-            await page.getByRole('row', { name: 'Edit 7 PO - 999 trackTest' }).getByRole('button').first().click();
+            await page.getByRole('row', { name: 'Edit 7 PO - 2131 trackTest' }).getByRole('button').first().click();
             await page.getByRole('button', { name: 'Add to Inventory' }).click();
 
             await page.goto("http://localhost:5173/#/app/inventory-item/6");

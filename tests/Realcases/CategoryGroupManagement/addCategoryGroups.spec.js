@@ -20,9 +20,11 @@ test("test", async ({ page }) => {
   await page.getByPlaceholder("Password").fill(RBMS_PASSWORD);
 
   await page.getByRole("button", { name: "Sign In" }).click();
+
   await page.getByRole("link", { name: "Category Groups Management" }).click();
   await page.getByRole("button", { name: "Create Category Group" }).click();
   await page.getByPlaceholder("Category Group Name").click();
+
   await page.getByPlaceholder("Category Group Name").fill("Computing Devices");
   await page.getByRole("button", { name: "Submit" }).click();
   await page.getByRole("button", { name: "Create Category Group" }).click();

@@ -571,9 +571,9 @@ test.describe("Addinf fields", () => {
     page = await browser.newPage();
     await page.goto(URL_TEST);
     await page.getByPlaceholder("User Name").click();
-    await page.getByPlaceholder("User Name").fill(username);
+    await page.getByPlaceholder("User Name").fill(RBMS_USERNAME);
     await page.getByPlaceholder("Password").click();
-    await page.getByPlaceholder("Password").fill(password);
+    await page.getByPlaceholder("Password").fill(RBMS_PASSWORD);
     await page.getByRole("button", { name: "Sign In" }).click();
     await expect(page).toHaveURL("http://localhost:5173/#/app/sales/dashboard");
     await page
@@ -589,28 +589,38 @@ test.describe("Addinf fields", () => {
 
   testaddFields.forEach((fielditems, index) => {
     test(`Test Case ${index + 1} ${fielditems.fieldName}`, async () => {
-      await page.waitForTimeout(500);
+      await page.getByRole("link", { name: "Fields" }).click();
       await page.getByRole("button", { name: "Create New Field" }).click();
-
+      await page.waitForTimeout(100);
       await page.getByPlaceholder("Field Name").click();
       await page.getByPlaceholder("Field Name").fill(fielditems.fieldName);
-      await page.locator(".select__input-container").first().click();
-
+      await page
+        .locator("div")
+        .filter({ hasText: /^Data Type$/ })
+        .nth(3)
+        .click();
+      await page.waitForTimeout(100);
       await page.getByText(fielditems.dataType, { exact: true }).click();
-
+      await page.waitForTimeout(100);
+      if (fielditems.fieldGroup) {
+        await page
+          .locator(
+            "div:nth-child(3) > div > .select > .select__control > .select__value-container > .select__input-container"
+          )
+          .click(); //FieldGroup expand
+        await page.getByText(fielditems.fieldGroup).click();
+      }
       await page
         .locator(
           "div:nth-child(4) > div > .select > .select__control > .select__value-container > .select__input-container"
         )
-        .click();
+        .click(); //FieldType expand
       await page.getByText(fielditems.fieldType, { exact: true }).click();
-
       if (fielditems.isMultiple) {
         await page.getByLabel("").check();
       } else {
         await page.getByLabel("").uncheck();
       }
-
       await page.getByRole("button", { name: "Save" }).click();
     });
   });

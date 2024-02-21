@@ -10,12 +10,9 @@ const { RBMS_URL_TEST, RBMS_USERNAME, RBMS_PASSWORD } = process.env
 
 const createReceiving = [
 
-  { receivingType: "PO", identifier: "999", supplier: "d&d SUPPLIER TECH", courier: "UPS", trackingNumber: "AXPUI1212", Description: "Description D&D axpui1", quantityToReceive: 23, quantityReceived: 23, partiallyReceived: false, fullyReceived: true, notes: "Description D&D axpui1" },
-  { receivingType: "RMA", identifier: "7", supplier: "d&d SUPPLIER INC", courier: "UPS", trackingNumber: "AXPUI1231", Description: "Description D&D axpui2", quantityToReceive: 22, quantityReceived: 21, partiallyReceived: true, fullyReceived: true, notes: "Description D&D axpui2" },
-  { receivingType: "Service", identifier: "9", supplier: "d&d SUPPLIER LTD", courier: "UPS", trackingNumber: "AXPUI1234", Description: "Description D&D axpui3", quantityToReceive: 24, quantityReceived: 22, partiallyReceived: true, fullyReceived: true, notes: "Description D&D axpui3" },
-
-  //{ receivingType : "",    identifier : "",    supplier : "",    courier : "",    trackingNumber : "",    Description : "",    quantityToReceive : "",    quantityReceived : "",    partiallyReceived : "",    fullyReceived : "",    notes : "", },
-
+  { receivingType: "PO", identifier: "2131", supplier: "d&d SUPPLIER TECH", courier: "UPS", trackingNumber: "AXPUI2131", Description: "Description D&D AXPUI2131", quantityToReceive: 1, quantityReceived: 1, partiallyReceived: false, fullyReceived: true, notes: "Description D&D AXPUI2131" },
+  { receivingType: "RMA", identifier: "2132", supplier: "d&d SUPPLIER INC", courier: "UPS", trackingNumber: "AXPUI2132", Description: "Description D&D AXPUI2132", quantityToReceive: 2, quantityReceived: 1, partiallyReceived: true, fullyReceived: false, notes: "Description D&D AXPUI2132" },
+  { receivingType: "Service", identifier: "2133", supplier: "d&d SUPPLIER LTD", courier: "UPS", trackingNumber: "AXPUI2133", Description: "Description D&D AXPUI2133", quantityToReceive: 3, quantityReceived: 3, partiallyReceived: false, fullyReceived: true, notes: "Description D&D AXPUI2133" },
 
 ];
 
